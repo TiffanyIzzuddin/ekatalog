@@ -52,11 +52,13 @@
                         <div class="card h-100" style="width: 15rem;">
                             <div class="card-header">{{ $value->nama_produk }}</div>
                             <img class="card-img-top" src="{{ asset('storage/' . $value->gambar_produk) }}" class="bg-dark" width="265" height="265">
-                            <div class="card-body">
+                            <div class="card-body text-center">
                                 <p class="card-text text-center">{{ Illuminate\Support\Str::limit($value->deskripsi_produk, 50) }}<br></p>
-                            </div>
-                            <div class="card-footer text-center">
                                 <small class="text-body">{{ $value->harga_produk }}</small>
+                            </div>
+                            <div class="card-footer">
+                                <a href="{{ route('produk.show', $value->id) }}"
+                                    class="btn btn-sm btn-outline-secondary mb-2 mt-2 text-start">View</a>
                             </div>
                         </div>
                     </div>

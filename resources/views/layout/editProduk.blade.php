@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Isi Data Diri</title>
+    <title>Edit Produk</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/product/">
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"
@@ -19,20 +19,14 @@
         @include('layout.navbar')
     @show
 
-    <form action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('produk.update', $produk) }}" method="POST" enctype="multipart/form-data">
         @csrf
-
-        @auth
-        <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
-
-        @endauth
-
-
+        @method('PUT')
         <div class="container px-5">
             <div class="mt-5 mb-3">
                 <label for="nama_produk" class="form-label">Nama produk</label>
                 <input type="text" id="nama_produk" name="nama_produk" class="form-control" required autofocus
-                    value="{{ old('nama_produk') }}">
+                    value="{{ $produk->nama_produk }}">
             </div>
             {{-- choose dropdown --}}
             <div class="mb-3">
@@ -47,19 +41,25 @@
             <div class="mb-3">
                 <label for="deskripsi_produk" class="form-label">Deskripsi produk</label>
                 <input type="text" id="nama" name="deskripsi_produk" class="form-control" required autofocus
-                    value="{{ old('deskripsi_produk') }}">
+                    value="{{ $produk->deskripsi_produk}}">
             </div>
             <div class="mb-3">
                 <label for="harga_produk" class="form-label">Harga Produk</label>
                 <input type="text" id="nama" name="harga_produk" class="form-control" required autofocus
-                    value="{{ old('harga_produk') }}">
+                    value="{{ $produk->harga_produk }}">
             </div>
             {{-- pick pic --}}
             <div class="mb-3">
-                <label for="gambar_produk" class="form-label">Gambar Produk</label>
-                <img class="img-preview img-fluid mb-3 col-sm-5">
-                <input class="form-control" type="file" id="gambar_produk" name="gambar_produk" onchange="previewImage()">
-            </div>
+               <label for="gambar_produk" class="form-label">Post Image</label>
+
+               @if ($produk->gambar_produk)
+               <img src="{{ asset('storage/' . $produk->gambar_produk) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+               @else
+               <img class="img-preview img-fluid mb-3 col-sm-5">
+               @endif
+
+               <input class="form-control" type="file" id="gambar_produk" name="gambar_produk" onchange="previewImage()" onchange="previewImage()">
+           </div>
             <button type="submit" class="btn btn-primary float-end mb-3">Simpan</button>
             <a href="{{ route('produk.index') }}" class="btn btn-primary float-start mb-3">Kembali</a>
         </div>

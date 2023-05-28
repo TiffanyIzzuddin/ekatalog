@@ -1,9 +1,11 @@
- <nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
+<link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbar-fixed/">
+
+{{-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"> --}}
+<nav class="navbar navbar-dark fixed-top bg-dark" aria-label="First navbar example">
    <div class="container-fluid">
 
       {{-- navbar-brand dinamis = {{ config('app.name') }} --}}
      <a class="navbar-brand" href="{{ url('/') }}">E-Katalog</a>
-
      <ul class="navbar-nav me-auto">
 
         @auth

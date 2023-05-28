@@ -28,8 +28,6 @@ class ProdukController extends Controller
         ->where('user_id','=', Auth::user()->id)
         ->get();
 
-
-
         $kategori = Kategori::all();
         $kelurahan = Kelurahan::all();
         $umkm = Umkm::all();
@@ -73,7 +71,7 @@ class ProdukController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id, Produk $produk)
+    public function show(Produk $produk)
     {
         return view('layout.showProduk', compact('produk'));
     }
@@ -83,15 +81,39 @@ class ProdukController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('layout.editProduk')->with([
+            'produk' => Produk::find($id),
+            $kategori = Kategori::all(),
+            'kategori' => $kategori,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Produk $produk)
     {
-        //
+        $request->validate([
+            'nama_produk' =>'required',
+            'kategori_id' =>'required',
+            'harga_produk' =>'required',
+            'deskripsi_produk' =>'required',
+            'gambar_produk' => 'image|file|max:2048',
+        ]);
+
+        $input = $request->all();
+
+        if ($request->file('gambar_produk')) {
+            $input['gambar_produk'] = $request->file('gambar_produk')->store('post-images');
+        }
+
+        if ($request->gambar_produk) {
+            Storage::delete($produk->gambar_produk);
+        }
+
+        $produk->update($input);
+
+        return to_route('produk.index')->with('success', 'Data berhasil di ubah');
     }
 
     /**

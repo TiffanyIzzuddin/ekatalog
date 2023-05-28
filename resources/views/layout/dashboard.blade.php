@@ -94,6 +94,7 @@
                                 <div class="card-body">
                                     <p class="text-center fw-normal">{{ Illuminate\Support\Str::limit($value->nama_produk, 20) }}</p>
                                 </div>
+                                <a href="{{ route('produk.show', $value->id) }}" class="btn btn-sm btn-outline-secondary mb-2 mt-2">View</a>
                             </div>
                         </div>
                     @endforeach
@@ -125,6 +126,7 @@
                                     <div class="card-body">
                                         <p class="text-center fw-normal">{{ Illuminate\Support\Str::limit($value->nama_produk, 20) }}</p>
                                     </div>
+                                    <a href="{{ route('produk.show', $value->id) }}" class="btn btn-sm btn-outline-secondary mb-2 mt-2">View</a>
                                 </div>
                             </div>
                     @endforeach

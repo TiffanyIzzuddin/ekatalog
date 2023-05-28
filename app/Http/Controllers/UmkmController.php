@@ -61,11 +61,11 @@ class UmkmController extends Controller
             'no_telp_umkm' => 'required',
             'url_instagram' => 'required',
             'keterangan_umkm' => 'required',
-            'logo_umkm' => 'required',
             'logo_umkm' => 'image|file|max:2048',
             'status_umkm' => 'required',
             'user_id' => 'required',
         ]);
+
         if ($request->file('logo_umkm')) {
             $validated['logo_umkm'] = $request->file('logo_umkm')->store('post-images');
         }
@@ -99,7 +99,8 @@ class UmkmController extends Controller
      */
     public function update(Request $request, Umkm $umkm)
     {
-        $validated = $request->validate([
+
+        $request->validate([
             'nama_umkm' => 'required',
             'nama_pemilik' => 'required',
             'kelurahan_id' => 'required',
@@ -107,33 +108,22 @@ class UmkmController extends Controller
             'no_telp_umkm' => 'required',
             'url_instagram' => 'required',
             'keterangan_umkm' => 'required',
-
             'logo_umkm' => 'image|file|max:2048',
-
             'status_umkm' => 'required',
-
         ]);
 
+        $input = $request->all();
+        
+        if ($request->file('logo_umkm')) {
+            $input['logo_umkm'] = $request->file('logo_umkm')->store('post-images');
+        }
 
-        $umkm->nama_umkm = $request->nama_umkm;
-        $umkm->nama_pemilik = $request->nama_pemilik;
-        $umkm->kelurahan_id = $request->kelurahan_id;
-        $umkm->alamat_umkm = $request->alamat_umkm;
-        $umkm->no_telp_umkm = $request->no_telp_umkm;
-        $umkm->url_instagram = $request->url_instagram;
-        $umkm->keterangan_umkm = $request->keterangan_umkm;
-        $umkm->logo_umkm = $request->logo_umkm;
-        $umkm->status_umkm = $request->status_umkm;
-
-        if ($umkm->logo_umkm) {
+        if ($request->logo_umkm) {
             Storage::delete($umkm->logo_umkm);
         }
 
-        if ($request->file('logo_umkm')) {
-            $validated['logo_umkm'] = $request->file('logo_umkm')->store('post-images');
-        }
-
-        $umkm->save();
+        $umkm->update($input);
+        
         return to_route('umkm.index')->with('success', 'Data berhasil di ubah');
     }
 

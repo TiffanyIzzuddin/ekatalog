@@ -48,7 +48,6 @@
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
                     @foreach ($user as $value)
-
                         <h1 class="fw-bold">Profil UMKM</h1>
                         <h2 class="fw-bold">{{ $value->nama_pemilik }}</h2>
                     @endforeach
@@ -75,18 +74,20 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $value->nama_umkm }}</h5>
-                                <p class="card-text">{{ $value->nama_pemilik }}. Usaha Mikro Kecil dan Menengah {{ $value->nama_umkm }}</p>
+                                <p class="card-text">{{ $value->nama_pemilik }}. Usaha Mikro Kecil dan Menengah
+                                    {{ $value->nama_umkm }}</p>
 
-                                {{-- <p class="card-text">{{ $value->alamat_umkm }},
-                                    {{ $value->kelurahan->nama_kelurahan }},
-                                    {{ $value->kelurahan->kecamatan->nama_kecamatan }}.</p> --}}
+                                @foreach ($umkm as $value)
+                                    <p class="card-text">{{ $value->alamat_umkm }},
+                                        {{ $value->kelurahan->nama_kelurahan }},
+                                        {{ $value->kelurahan->kecamatan->nama_kecamatan }}.</p>
+                                @endforeach
 
-
-                                <p class="card-text"><small
-                                        class="text-body-dark">Status : {{ $value->status_umkm }}</small>
+                                <p class="card-text"><small class="text-body-dark">Status :
+                                        {{ $value->status_umkm }}</small>
                                 </p>
                                 <div class="mb-2 d-flex justify-content-between align-items-center">
-                                    <div class="btn-group gap-1">
+                                    <div class="btn-group">
                                         <a href="{{ route('umkm.edit', $value->id) }}"
                                             class="btn btn-sm btn-outline-secondary mb-2 mt-2">edit</a>
                                         <form method="POST" action="{{ route('umkm.destroy', $value->id) }}">
@@ -113,8 +114,10 @@
                         <p class="card-text">{{ $value->keterangan_umkm }}</p>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted"><i class="bi bi-telephone"></i>&nbsp;&nbsp;Nomor yang bisa dihubungi : {{ $value->no_telp_umkm }}</small><br>
-                        <small class="text-muted"><i class="bi bi-instagram"></i>&nbsp;&nbsp;Instagram : {{ $value->url_instagram }}</small>
+                        <small class="text-muted"><i class="bi bi-telephone"></i>&nbsp;&nbsp;Nomor yang bisa dihubungi :
+                            {{ $value->no_telp_umkm }}</small><br>
+                        <small class="text-muted"><i class="bi bi-instagram"></i>&nbsp;&nbsp;Instagram :
+                            {{ $value->url_instagram }}</small>
                     </div>
                     {{-- <div class="mb-3 px-3 d-flex justify-content-between align-items-center">
                         <div class="btn-group">
@@ -133,45 +136,47 @@
                 <h5>Daftar Produk</h5>
             </div>
             <div class="card-body">
-                <a href="{{ route('produk.create') }}" class="btn btn-sm btn-outline-dark mb-2 mt-2 my-2">Isi Data produk</a>
+                <a href="{{ route('produk.create') }}" class="btn btn-sm btn-outline-dark mb-2 mt-2 my-2">Isi Data
+                    produk</a>
             </div>
 
             <div class="album py-5 bg-body-tertiary">
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-                    @foreach ($user1 as $value)
-
-                        <div class="col">
-                            <div class="card h-100">
-                                <div class="card-header">{{ $value->nama_produk }}</div>
-                                <img src="{{ asset('storage/' . $value->gambar_produk) }}" class="card-img-top" width="265" height="265">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            {{-- <a href="#" class="btn btn-sm btn-outline-secondary mb-2 mt-2">view</a> --}}
-
-                                            {{-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> --}}
-
-                                                <form method="POST" action="{{ route('produk.destroy', $value->id) }}">
+                        @foreach ($user1 as $value)
+                            <div class="col">
+                                <div class="card h-100">
+                                    <div class="card-header">{{ $value->nama_produk }}</div>
+                                    <img src="{{ asset('storage/' . $value->gambar_produk) }}" class="card-img-top"
+                                        width="265" height="265">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ route('produk.show', $value->id) }}"
+                                                    class="btn btn-sm btn-outline-secondary mb-2 mt-2">View</a>
+                                                <a href="{{ route('produk.edit', $value->id) }}"
+                                                    class="btn btn-sm btn-outline-secondary mb-2 mt-2">Edit</a>
+                                                <form method="POST"
+                                                    action="{{ route('produk.destroy', $value->id) }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"
                                                         onclick="return confirm('Apa anda yakin {{ $value->nama_produk }} di hapus?')"
-                                                        class="btn btn-sm btn-outline-dark mb-2 mt-2">Delete</button>
+                                                        class="btn btn-sm btn-outline-secondary mb-2 mt-2">Delete</button>
                                                 </form>
+                                            </div>
+                                            <small class="text-body-secondary">{{ $value->created_at }}</small>
                                         </div>
-                                        <small class="text-body-secondary">{{ $value->created_at }}</small>
-                                    </div>
-                                    <p class="card-text">{{ Illuminate\Support\Str::limit($value->deskripsi_produk, 50) }}<br></p>
+                                        <p class="card-text">
+                                            {{ Illuminate\Support\Str::limit($value->deskripsi_produk, 50) }}<br></p>
 
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-body-secondary">{{ $value->harga_produk }}</small>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-body-secondary">{{ $value->harga_produk }}</small>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                    @endforeach
+                        @endforeach
                     </div>
                 </div>
             </div>
