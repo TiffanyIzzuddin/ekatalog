@@ -52,9 +52,18 @@
                         <h2 class="fw-bold">{{ $value->nama_pemilik }}</h2>
                     @endforeach
                     <p class="lead text-body-secondary">Profil pribadi sebagai UMKM</p>
+
+                    {{-- @if ($user = Auth::user()->id) --}}
+                    {{-- {{ umkm->id }} = {{ user->id }} --}}
+                    {{-- $do_nothing --}}
                     <p>
                         <a href="{{ route('umkm.create') }}" class="btn btn-dark my-2">Isi Data</a>
                     </p>
+                    {{-- @endif --}}
+
+                    {{-- <p>
+                        <a href="{{ route('umkm.create') }}" class="btn btn-dark my-2">Isi Data</a>
+                    </p> --}}
                 </div>
             </div>
         </section>
@@ -79,8 +88,8 @@
 
                                 @foreach ($umkm as $value)
                                     <p class="card-text">{{ $value->alamat_umkm }},
-                                        {{ $value->kelurahan->nama_kelurahan }},
-                                        {{ $value->kelurahan->kecamatan->nama_kecamatan }}.</p>
+                                        {{ $value->nama_kelurahan }}.</p>
+                                        {{-- {{ $value->kelurahan->kecamatan->nama_kecamatan }} --}}
                                 @endforeach
 
                                 <p class="card-text"><small class="text-body-dark">Status :
