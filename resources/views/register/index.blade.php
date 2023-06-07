@@ -83,21 +83,6 @@
 
             </div>
 
-            {{-- <form action="{{ route('umkm.store') }}" method="POST" enctype="multipart/form-data">
-              @csrf  
-              @auth
-              <input type="hidden" value="21" name="user_id">
-              <input type="hidden" value="Amanah Store" name="nama_umkm">
-              <input type="hidden" value="Aminah" name="nama_pemilik">
-              <input type="hidden" value="1" name="kelurahan_id">
-              <input type="hidden" value="null" name="alamat_umkm">
-              <input type="hidden" value="085xxxx" name="no_telp_umkm">
-              <input type="hidden" value="Umkm yang ..." name="keterangan_umkm">
-              <input type="hidden" value="Tidak Aktif" name="status_umkm">
-              <input type="hidden" value="{{ asset('img/person.jpg') }}" name="logo_umkm">
-              @endauth
-            </form> --}}
-
             <button class="w-100 btn btn-lg btn-dark" type="submit">Registrasi</button>
         
     </form>

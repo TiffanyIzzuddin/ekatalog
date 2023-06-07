@@ -45,8 +45,8 @@
             </div>
         </div>
     </div>
-    <a href="{{ route('produk.index') }}" class="btn btn-dark my-3 mx-3">Kembali</a>
-    <a href="{{ url('/') }}" class="btn btn-dark my-3 mx-3 float-end">Detail</a>
+    <a href="{{ route('produk.index') }}" class="btn btn-dark my-3 mx-3">Detail</a>
+    <a href="{{ url('/') }}" class="btn btn-dark my-3 mx-3 float-end">Kembali</a>
 
     @section('footer')
         @include('layout.footerUtama')
