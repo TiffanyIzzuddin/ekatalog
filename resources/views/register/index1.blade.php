@@ -36,19 +36,9 @@
     }
         </style>
 
-@if(session()->has('success'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{ session('success') }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-@endif
-
-
-
-
 <main class="form-registration w-100 m-auto">
     <h1 class="h3 mb-3 fw-bold text-center">Silahkan Registrasi</h1>
-    <form action="/register" method="post">
+    <form action="/register1" method="post">
         @csrf
       <div class="form-floating">
         <input type="text" name="name" class="form-control @error ('name') is-invalid @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
@@ -107,6 +97,7 @@
 
       <button class="w-100 btn btn-lg btn-dark" type="submit">Registrasi</button>
     </form>
+    <small class="d-block text-center mt-3">Sudah Registrasi? <a href="/login">Login</a></small>
   </main>
 
 

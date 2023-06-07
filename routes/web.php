@@ -62,13 +62,18 @@ Route::get('/anggota', function () {
     return view('layout.anggota');
 });
 
-
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+// Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::get('/register1', [RegisterController::class, 'index1'])->middleware('guest');
+Route::post('/register1', [RegisterController::class, 'store1']);
 
+Route::middleware('auth')->group(function () {
+    Route::get('/register', [RegisterController::class, 'index'])->name('Register.index');
+    Route::post('/register', [RegisterController::class, 'store'])->name('Register.store');
+});
 
