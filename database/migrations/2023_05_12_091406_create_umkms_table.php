@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('no_telp_umkm');
             $table->string('url_instagram');
             $table->string('url_umkm')->nullable();
-            $table->string('logo_umkm');
+            $table->string('logo_umkm')->nullable();
             $table->string('keterangan_umkm');
             $table->string('status_umkm');
             $table->timestamps();

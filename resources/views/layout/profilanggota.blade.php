@@ -78,9 +78,7 @@
                                     {{ $value->nama_umkm }}</p>
 
                                 @foreach ($umkm as $value)
-                                    <p class="card-text">{{ $value->alamat_umkm }},
-                                        {{ $value->kelurahan->nama_kelurahan }},
-                                        {{ $value->kelurahan->kecamatan->nama_kecamatan }}.</p>
+                                    <p class="card-text">{{ $value->alamat_umkm }}</p>
                                 @endforeach
 
                                 <p class="card-text"><small class="text-body-dark">Status :
