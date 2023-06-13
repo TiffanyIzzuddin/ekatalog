@@ -7,7 +7,7 @@
     {{-- tidak ada src dibawah ini ada di folder 'original' : asset --}}
     <script src="{{ asset('bootstrap/js/color-modes.js') }}"></script>
 
-    <title>Kategori</title>
+    <title>Halaman Produk Kategori</title>
 
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -40,7 +40,7 @@
         <div class="container">
             <div class="text-left">
                 <p>
-                    <a href="/katalog" class="btn btn-outline-dark ">Kembali</a>
+                    <a href="/kategori1" class="btn btn-outline-dark ">Kembali</a>
                 </p>
             </div>
         </div>
@@ -52,28 +52,38 @@
                     <hr>
                 </p>
             </div>
-            <h3>Kategori</h3>
+
+            @foreach ($kat as $value )
+            <h3>Kategori: {{ $value->nama_kategori }}</h3>
+
             <div class="container ">
                 <p>
-                    <a></a>
+                    {{-- <a>{{ $value->keterangan }}</a> --}}
                     <hr>
                 </p>
             </div>
+            @endforeach
+
+            @foreach ($pro as $value)
             <div class="kategori">
-                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-5 g-3 d-flex justify-content-center">
-                    @foreach ($kat as $value)
-                        <a href="/halamankategori/{{ $value->nama_kategori}}">
-                            <a href="/halamankategori/{{ $value->id}}">
-                            <div class="card h-100" style="width: 15rem;">
-                                <img src="https://source.unsplash.com/500x400/?{{ $value->nama_kategori }}" class="card-img-top d-flex align-items-center">
-                                <h5 class="card-title p-5">{{ $value->nama_kategori }}</h5>
-                            </div>
-                        </a>
-                    @endforeach
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-5 g-3 d-flex justify-content-center gap-5">
+                    {{-- <a href="{{ route('produk.show', $id ) }}"> --}}
+                        <div class="card h-100" style="width: 15rem;">
+                            {{-- <img src="{{ asset('storage/' .  $gambar ) }}" class="img-fluid rounded-start" alt="" class="card-img-top d-flex align-items-center"> --}}
+                            <h5 class="card-title p-5">{{ $value->nama_produk }}</h5>
+                        </div>
+                    </a>
+
+
                 </div>
 
             </div>
+            @endforeach
         </div>
+
+        @foreach ($pro as $value)
+            {{ $value->id }}
+        @endforeach
 
 
 

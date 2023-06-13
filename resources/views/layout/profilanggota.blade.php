@@ -21,6 +21,8 @@
     <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#712cf9">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 
     <style>
         .img {
@@ -50,9 +52,10 @@
                     @foreach ($user as $value)
                         <h1 class="fw-bold">Profil UMKM</h1>
                         <h2 class="fw-bold">{{ $value->nama_pemilik }}</h2>
-                    @endforeach
+                        @endforeach
                     <p class="lead text-body-secondary">Profil pribadi sebagai UMKM</p>
                     <p>
+
                         <a href="{{ route('umkm.create') }}" class="btn btn-dark my-2">Isi Data</a>
                     </p>
                 </div>
@@ -138,6 +141,7 @@
             <div class="card-body">
                 <a href="{{ route('produk.create') }}" class="btn btn-sm btn-outline-dark mb-2 mt-2 my-2">Isi Data
                     produk</a>
+
             </div>
 
             <div class="album py-5 bg-body-tertiary">

@@ -21,15 +21,30 @@ class indexController extends Controller
         // menampilkan 5 produk terbaru
         $prod = Produk::latest()->take(5)->get();
         // menampilkan seluruh produk
-        $pro = Produk::all();
+        $pro = Produk::inRandomOrder()->take(5)->get();
         return view('layout.dashboard', compact('pro', 'prod'));
     }
 
+
+    //kategori dibawah ini diganti dengan indexKategori diatas
     public function kategori(){
         // menampilkan seluruh kategori
         // $kat = DB::table('kategori')->get();
         // $kat = Produk::select('kategori')->groupBy('kategori')->get();
+        $pro = Produk::all();
         $kat = Kategori::all();
-        return view('layout.kategori1', compact('kat'));
+        return view('layout.kategori1', compact('kat', 'pro'));
+    }
+
+    public function kategori2(Kategori $id)
+    {
+        $kat = Kategori::find($id);
+        $pro = Produk::all();
+        // $pro = DB::table('kategori')
+        // ->join('produk', 'kategori.id', '=', 'produk.kategori_id')
+        // ->where('kategori_id','=', $id)
+        // ->get();
+
+        return view('layout.kategori', compact('kat', 'pro'));
     }
 }

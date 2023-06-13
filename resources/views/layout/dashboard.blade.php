@@ -34,7 +34,7 @@
             class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
             <div class="col-md-5 p-lg-5 mx-auto my-5">
                 <div class="p-5 p-md-3 mb-4">
-                    <h1 class="display-5 fw-bold text-dark">E-Katalog UMKM Kabupaten Malang</h1>
+                    <h1 class="display-5 fw-bold text-white">E-Katalog UMKM Kabupaten Malang</h1>
                     <br>
                     <p class="lead mb-9 text-white">sebagai salah satu strategi untuk memasarkan produk kita dengan
                         efektif dan mudah</p>
@@ -47,22 +47,22 @@
 
         <div class="my-5">
             <div class="p-5 text-center bg-body-tertiary">
-                <div class="container py-5">
-                    <h1 class="text-body-emphasis">49 UMKM</h1>
+                <div class="container py-1">
+                    <h1 class="text-body-emphasis">UMKM</h1>
                     <p class="col-lg-8 mx-auto lead">
-                        Anggota UMKM di kelurahan Sekarpuro, Kabupaten Malang.
+                        Usaha produktif yang dimiliki perorangan maupun badan usaha yang telah memenuhi kriteria sebagai usaha mikro.
                     </p>
                 </div>
             </div>
         </div>
 
-        <!--isi PRODUK BULANAN-->
+        <!--isi LINK MENUJU KATALOG-->
 
         <div class="my-5">
             <div class="p-7 p-md-5 mb-7 text-bg-dark">
                 <div class="col-xl-7 px-2">
-                    <h1 class="p-2 p-md-9 mb-4 display-5 fw-normal ">Product Of This Month</h1>
-                    <p class="lead my-1">Produk pilihan bulan ini, Segera lihat dan cek apa saja yang muncul disini.</p>
+                    <h1 class="p-2 p-md-9 mb-4 display-5 fw-normal ">Silakan Cek Seluruh Produk </h1>
+                    <p class="lead my-1">Produk pilihan setiap UMKM ada disini, Segera lihat dan cek apa saja yang muncul...</p>
                     <br>
                     <a href="/katalog" class="btn btn-outline-light">Klik disini..</a>
 
@@ -94,7 +94,7 @@
                                 <div class="card-body">
                                     <p class="text-center fw-normal">{{ Illuminate\Support\Str::limit($value->nama_produk, 20) }}</p>
                                 </div>
-                                <a href="{{ route('produk.show', $value->id) }}" class="btn btn-sm btn-outline-secondary mb-2 mt-2">View</a>
+                                <a href="{{ route('produk.show', $value->id) }}" class="btn btn-sm btn-outline-dark mb-2 mt-2">View</a>
                             </div>
                         </div>
                     @endforeach
@@ -118,7 +118,7 @@
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-5 g-3">
 
-                    @foreach ($pro->take(5) as $value)
+                    @foreach ($pro as $value)
                             <div class="col">
                                 <div class="card h-100">
                                     <img class="card-img-top" src="{{ asset('storage/' . $value->gambar_produk) }}"
@@ -126,7 +126,7 @@
                                     <div class="card-body">
                                         <p class="text-center fw-normal">{{ Illuminate\Support\Str::limit($value->nama_produk, 20) }}</p>
                                     </div>
-                                    <a href="{{ route('produk.show', $value->id) }}" class="btn btn-sm btn-outline-secondary mb-2 mt-2">View</a>
+                                    <a href="{{ route('produk.show', $value->id) }}" class="btn btn-sm btn-outline-dark mb-2 mt-2">View</a>
                                 </div>
                             </div>
                     @endforeach

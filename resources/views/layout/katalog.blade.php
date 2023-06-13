@@ -58,7 +58,7 @@
                             </div>
                             <div class="card-footer">
                                 <a href="{{ route('produk.show', $value->id) }}"
-                                    class="btn btn-sm btn-outline-secondary mb-2 mt-2 text-start">View</a>
+                                    class="btn btn-sm btn-outline-dark mb-2 mt-2 text-start">View</a>
                             </div>
                         </div>
                     </div>

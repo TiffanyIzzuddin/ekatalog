@@ -27,7 +27,7 @@
     @section('header')
         @include('layout.navbar')
     @show
-    <h3 class="my-3 mx-3" >Detail Produk</h3>
+    <h3 class="my-3 mx-3 text-center fw-bold" >Detail Produk</h3>
     <div class="container my-5"  style="display:flex; justify-content:center">
         <div class="card mb-3  w-100 h-75">
             <div class="row g-0">
@@ -44,8 +44,20 @@
             </div>
         </div>
     </div>
-    <a href="{{ route('produk.index') }}" class="btn btn-dark my-3 mx-3">Profil UMKM</a>
+
+    @auth
+    @if(Auth::user()->role_id != 2)
+    <a href="{{ route('produk.index') }}" class="btn btn-dark my-3 mx-3">Cek Profil</a>
+
+      @else
+
+    @endif
+    @endauth
+
+
+
     <a href="{{ url('/') }}" class="btn btn-dark my-3 mx-3">Kembali</a>
+
 
     @section('footer')
         @include('layout.footerUtama')

@@ -33,6 +33,7 @@ class ProdukController extends Controller
         $umkm = Umkm::all();
         $produk = Produk::all();
         return view('layout.profilanggota', compact( 'user1','user', 'kategori', 'umkm', 'kelurahan', 'produk'));
+
     }
 
     /**

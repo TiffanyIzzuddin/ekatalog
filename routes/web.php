@@ -13,6 +13,9 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\KelurahanController;
 
+use App\Models\Kategori;
+use App\Models\Produk;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +34,7 @@ use App\Http\Controllers\KelurahanController;
 Route::get('/', [indexController::class, 'indexes']);
 Route::get('/katalog', [indexController::class, 'index']);
 Route::get('/kategori1', [indexController::class, 'kategori']);
+Route::get('/halamankategori/{id}', [indexController::class, 'kategori2']);
 // Route::get('/kategori1/{id}/search', [UmkmController::class, 'search']);
 
 Route::get('/about', function () {
@@ -56,7 +60,14 @@ Route::resource('kecamatan', KecamatanController::class);
 
 Route::resource('kelurahan', KelurahanController::class);
 
-Route::resource('kategori', KategoriController::class);
+// Route::resource('kategori', KategoriController::class);
+
+Route::get('/halamankategori/{kategori:nama_kategori}', function(Produk $prod){
+    return view('layout.kategori', [
+        'title' => $prod->kategori_id
+    ]);
+
+});
 
 Route::get('/anggota', function () {
     return view('layout.anggota');
