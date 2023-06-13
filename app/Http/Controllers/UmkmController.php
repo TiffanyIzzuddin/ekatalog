@@ -29,13 +29,9 @@ class UmkmController extends Controller
         ->where('user_id','=', Auth::user()->id)
         ->get();
 
-        $umkm = DB::table('umkm')
-        ->join('kelurahan', 'umkm.kelurahan_id', '=', 'kelurahan.id')
-        ->where('umkm.id', '=', Auth::user()->id)
-        ->get();
 
         $kelurahan = Kelurahan::all();
-        // $umkm = Umkm::all();
+        $umkm = Umkm::all();
         $produk = Produk::all();
         return view('layout.profilanggota', compact('user','user1', 'umkm', 'kelurahan', 'produk'));
     }
@@ -117,7 +113,7 @@ class UmkmController extends Controller
         ]);
 
         $input = $request->all();
-        
+
         if ($request->file('logo_umkm')) {
             $input['logo_umkm'] = $request->file('logo_umkm')->store('post-images');
         }
@@ -127,7 +123,7 @@ class UmkmController extends Controller
         }
 
         $umkm->update($input);
-        
+
         return to_route('umkm.index')->with('success', 'Data berhasil di ubah');
     }
 

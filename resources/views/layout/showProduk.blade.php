@@ -3,12 +3,12 @@
 <head>
       {{-- tidak ada src dibawah ini ada di folder 'original' : asset --}}
       <script src="{{ asset('bootstrap/js/color-modes.js') }}"></script>
-  
+
       <title>Profil UMKM</title>
-  
+
       <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  
+
       <!-- Favicons -->
       <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
       <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -17,7 +17,6 @@
       <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
       <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
       <meta name="theme-color" content="#712cf9">
-  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -45,8 +44,8 @@
             </div>
         </div>
     </div>
-    <a href="{{ route('produk.index') }}" class="btn btn-dark my-3 mx-3">Detail</a>
-    <a href="{{ url('/') }}" class="btn btn-dark my-3 mx-3 float-end">Kembali</a>
+    <a href="{{ route('produk.index') }}" class="btn btn-dark my-3 mx-3">Profil UMKM</a>
+    <a href="{{ url('/') }}" class="btn btn-dark my-3 mx-3">Kembali</a>
 
     @section('footer')
         @include('layout.footerUtama')

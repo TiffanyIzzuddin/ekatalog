@@ -71,14 +71,16 @@
                             {{-- <img src="{{ asset('img/person.jpg') }}" class="img-fluid rounded-start" alt="anggota"
                                 width="200" height="200"> --}}
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-5">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $value->nama_umkm }}</h5>
                                 <p class="card-text">{{ $value->nama_pemilik }}. Usaha Mikro Kecil dan Menengah
                                     {{ $value->nama_umkm }}</p>
 
-                                @foreach ($umkm as $value)
-                                    <p class="card-text">{{ $value->alamat_umkm }}</p>
+                                @foreach ($user as $value)
+                                    <p class="card-text">{{ $value->alamat_umkm }},</p>
+                                        {{-- {{ $value->kelurahan->nama_kelurahan }},
+                                        {{ $value->kelurahan->kecamatan->nama_kecamatan }} --}}
                                 @endforeach
 
                                 <p class="card-text"><small class="text-body-dark">Status :

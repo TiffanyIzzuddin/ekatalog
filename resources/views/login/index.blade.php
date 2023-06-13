@@ -80,7 +80,7 @@
 
       <button class="w-100 btn btn-lg btn-dark" type="submit">Login</button>
     </form>
-    <small class="d-block text-center mt-3">Belum Registrasi? <a href="/register">Registrasi</a></small>
+    <small class="d-block text-center mt-3">Belum Registrasi? <a href="/register1">Registrasi</a></small>
   </main>
 
 

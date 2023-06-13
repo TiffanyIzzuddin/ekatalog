@@ -1,7 +1,8 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbar-fixed/">
 
 {{-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"> --}}
-<nav class="navbar navbar-dark fixed-top bg-dark" aria-label="First navbar example">
+{{-- <nav class="navbar navbar-dark -top bg-dark" aria-label="First navbar example"> --}}
+    <nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
    <div class="container-fluid">
 
       {{-- navbar-brand dinamis = {{ config('app.name') }} --}}
@@ -39,16 +40,21 @@
       <li class="nav-item">
         <a class="nav-link " href="{{ url('/about') }}"><i class="bi bi-credit-card"></i>&nbsp;Tentang Kami</a>
       </li>
-      @can('admin')
+      @if(Auth::user()->role_id != 2)
+
+      @else
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-database-down"></i>&nbsp;Previlege administrator</a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="{{ url('/kecamatan') }}"> Data Kecamatan</a></li>
           <li><a class="dropdown-item" href="{{ url('/kelurahan') }}"> Data Kelurahan</a></li>
           <li><a class="dropdown-item" href="{{ url('/kategori') }}"> Data Kategori</a></li>
+          <li><a class="dropdown-item" href="{{ url('/register') }}"> Registrasi Administrator</a></li>
         </ul>
       </li>
-      @endcan
+
+      @endif
+
       <li class="nav-item">
         <a class="nav-link ">
             <form action="/logout" method="post">
