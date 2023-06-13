@@ -39,8 +39,8 @@ Route::get('/about', function () {
 
 //
 
-Route::get('/pengawas', function () {
-    return view('layout.pengawas');
+Route::get('/admin', function () {
+    return view('layout.admin');
 });
 
 Route::get('/halamanumkm', function () {

@@ -83,7 +83,7 @@ class UmkmController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('layout.profilanggota');
     }
 
     /**
