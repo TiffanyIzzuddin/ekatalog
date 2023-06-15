@@ -37,7 +37,9 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h3 class="card-title">{{ $produk->nama_produk }}</h3>
+                        <h3 class="card-title">{{ $produk->nama_produk }}</h3><br>
+                        <h5 class="card-title">{{ $produk->umkm->nama_pemilik}}</h5>
+                        <h5 class="card-title">{{ $produk->umkm->no_telp_umkm }}</h5><br>
                         <p class="fs-5">{{ $produk->deskripsi_produk }}</p>
                         <p class="fs-5"><small class="text-body-secondary">{{ $produk->harga_produk }}</small></p>
                     </div>
@@ -45,8 +47,9 @@
             </div>
         </div>
     </div>
-    <a href="{{ route('produk.index') }}" class="btn btn-dark my-3 mx-3">Detail</a>
-    <a href="{{ url('/') }}" class="btn btn-dark my-3 mx-3 float-end">Kembali</a>
+    {{-- <a href="{{ route('produk.index') }}" class="btn btn-dark my-3 mx-3 float-end">Detail Produk</a> --}}
+    <a href="{{ route('umkm.show', $produk->umkm_id) }}" class="btn btn-dark my-3 mx-3 float-end">Detail Produk</a>
+    <a href="{{ url('/') }}" class="btn btn-dark my-3 mx-3">Kembali</a>
 
     @section('footer')
         @include('layout.footerUtama')

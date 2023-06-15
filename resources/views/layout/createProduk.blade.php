@@ -24,6 +24,7 @@
 
         @auth
         <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
+        <input type="hidden" value="{{ Auth::user()->id }}" name="umkm_id">
 
         @endauth
 

@@ -54,6 +54,7 @@ class ProdukController extends Controller
             'nama_produk' =>'required',
             'kategori_id' =>'required',
             'user_id' =>'required',
+            'umkm_id' =>'required',
             'harga_produk' =>'required',
             'deskripsi_produk' =>'required',
             'gambar_produk' => 'image|file|max:2048',

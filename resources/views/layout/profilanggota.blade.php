@@ -76,11 +76,7 @@
                                 <h5 class="card-title">{{ $value->nama_umkm }}</h5>
                                 <p class="card-text">{{ $value->nama_pemilik }}. Usaha Mikro Kecil dan Menengah
                                     {{ $value->nama_umkm }}</p>
-
-                                @foreach ($umkm as $value)
-                                    <p class="card-text">{{ $value->alamat_umkm }}</p>
-                                @endforeach
-
+                                <p class="card-text">{{ $value->alamat_umkm }}</p>
                                 <p class="card-text"><small class="text-body-dark">Status :
                                         {{ $value->status_umkm }}</small>
                                 </p>
@@ -141,7 +137,7 @@
             <div class="album py-5 bg-body-tertiary">
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-                        @foreach ($user1 as $value)
+                        @foreach ($user as $value)
                             <div class="col">
                                 <div class="card h-100">
                                     <div class="card-header">{{ $value->nama_produk }}</div>

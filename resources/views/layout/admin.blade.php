@@ -87,8 +87,8 @@
                     <a href="/umkm" class="btn btn-outline-dark">Kembali</a>
                 </p>
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-bold">Supervisor</h1>
-                    <p class="lead text-body-secondary fw-normal">Pengawas salah satu Usaha Mikro Kecil dan Menengah</p>
+                    <h1 class="fw-bold">Administrator</h1>
+                    <p class="lead text-body-secondary fw-normal">Administrator memastikan website berjalan baik untuk kesejahteraan UMKM.</p>
                 </div>
             </div>
         </section>

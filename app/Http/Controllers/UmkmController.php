@@ -29,15 +29,7 @@ class UmkmController extends Controller
         ->where('user_id','=', Auth::user()->id)
         ->get();
 
-        $umkm = DB::table('umkm')
-        ->join('kelurahan', 'umkm.kelurahan_id', '=', 'kelurahan.id')
-        ->where('umkm.id', '=', Auth::user()->id)
-        ->get();
-
-        $kelurahan = Kelurahan::all();
-        // $umkm = Umkm::all();
-        $produk = Produk::all();
-        return view('layout.profilanggota', compact('user','user1', 'umkm', 'kelurahan', 'produk'));
+        return view('layout.profilanggota', compact('user','user1'));
     }
 
     /**
@@ -81,9 +73,20 @@ class UmkmController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        //
+        $user = DB::table('umkm')
+        ->join('produk', 'umkm.id', '=', 'produk.umkm_id')
+        ->where('umkm_id','=', $request)
+        ->get();
+
+        // $user = DB::table('users')
+        // ->join('umkm', 'users.id', '=', 'umkm.user_id')
+        // ->join('produk', 'users.id', '=', 'produk.user_id')
+        // ->where('user_id','=', 'id')
+        // ->get();
+
+        return view('layout.profilanggota', compact('user'));
     }
 
     /**
