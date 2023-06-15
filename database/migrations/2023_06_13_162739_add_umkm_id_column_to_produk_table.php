@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('produk', function (Blueprint $table) {
             $table->unsignedBigInteger('umkm_id')->after('user_id');
-            $table->foreign('umkm_id')->references('id')->on('roles')->onDelete('restrict');
+            $table->foreign('umkm_id')->references('id')->on('umkm')->onDelete('restrict');
         });
     }
 
