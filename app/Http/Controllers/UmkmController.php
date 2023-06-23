@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kelurahan;
 use App\Models\Produk;
 use App\Models\Umkm;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -20,8 +21,10 @@ class UmkmController extends Controller
     {
         $user = DB::table('users')
         ->join('umkm', 'users.id', '=', 'umkm.user_id')
-        ->where('user_id','=', Auth::user()->id)
-        ->get();
+        ->join('produk', 'users.id', '=', 'produk.user_id')
+        ->where('users.id', '=', Auth::user()->id)
+        // ->get();
+        ->first();
 
 
         $user1 = DB::table('users')
@@ -73,20 +76,21 @@ class UmkmController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $request)
+    public function show($userId)
     {
-        $user = DB::table('umkm')
-        ->join('produk', 'umkm.id', '=', 'produk.umkm_id')
-        ->where('umkm_id','=', $request)
+        $user = DB::table('users')
+        ->join('umkm', 'users.id', '=', 'umkm.user_id')
+        ->join('produk', 'users.id', '=', 'produk.user_id')
+        ->where('users.id', '=', $userId)
+        // ->get();
+        ->first();
+
+        $user1 = DB::table('users')
+        ->join('produk', 'users.id', '=', 'produk.user_id')
+        ->where('user_id','=', $userId)
         ->get();
 
-        // $user = DB::table('users')
-        // ->join('umkm', 'users.id', '=', 'umkm.user_id')
-        // ->join('produk', 'users.id', '=', 'produk.user_id')
-        // ->where('user_id','=', 'id')
-        // ->get();
-
-        return view('layout.profilanggota', compact('user'));
+        return view('layout.profilanggota', compact('user', 'user1'));
     }
 
     /**

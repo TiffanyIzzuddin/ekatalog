@@ -47,10 +47,10 @@
         <section class="py-5 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    @foreach ($user as $value)
+                    @if ($user)
                         <h1 class="fw-bold">Profil UMKM</h1>
-                        <h2 class="fw-bold">{{ $value->nama_pemilik }}</h2>
-                    @endforeach
+                        <h2 class="fw-bold">{{ $user->nama_pemilik }}</h2>
+                    @endif
                     <p class="lead text-body-secondary">Profil pribadi sebagai UMKM</p>
                     <p>
                         <a href="{{ route('umkm.create') }}" class="btn btn-dark my-2">Isi Data</a>
@@ -63,28 +63,29 @@
         <div class="container" style="display:flex; justify-content:center">
             <div class="card mb-5" style="width: 1500px; length: 500px">
 
-                @foreach ($user as $value)
+                {{-- @foreach ($user as $value) --}}
+                @if ($user)
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="{{ asset('storage/' . $value->logo_umkm) }}" class="img-fluid rounded-start"
-                                alt="{{ $value->nama_umkm }}"style="width: 13rem; length: 13rem;  object-fit: cover ">
+                            <img src="{{ asset('storage/' . $user->logo_umkm) }}" class="img-fluid rounded-start"
+                                alt="{{ $user->nama_umkm }}"style="width: 13rem; length: 13rem;  object-fit: cover ">
                             {{-- <img src="{{ asset('img/person.jpg') }}" class="img-fluid rounded-start" alt="anggota"
                                 width="200" height="200"> --}}
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $value->nama_umkm }}</h5>
-                                <p class="card-text">{{ $value->nama_pemilik }}. Usaha Mikro Kecil dan Menengah
-                                    {{ $value->nama_umkm }}</p>
-                                <p class="card-text">{{ $value->alamat_umkm }}</p>
+                                <h5 class="card-title">{{ $user->nama_umkm }}</h5>
+                                <p class="card-text">{{ $user->nama_pemilik }}. Usaha Mikro Kecil dan Menengah
+                                    {{ $user->nama_umkm }}</p>
+                                <p class="card-text">{{ $user->alamat_umkm }}</p>
                                 <p class="card-text"><small class="text-body-dark">Status :
-                                        {{ $value->status_umkm }}</small>
+                                        {{ $user->status_umkm }}</small>
                                 </p>
                                 <div class="mb-2 d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="{{ route('umkm.edit', $value->id) }}"
+                                        <a href="{{ route('umkm.edit', $user->id) }}"
                                             class="btn btn-sm btn-outline-secondary mb-2 mt-2">edit</a>
-                                        <form method="POST" action="{{ route('umkm.destroy', $value->id) }}">
+                                        <form method="POST" action="{{ route('umkm.destroy', $user->id) }}">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
@@ -96,29 +97,35 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                    @endif
+                {{-- @endforeach --}}
             </div>
         </div>
 
         <div class="container" style="display:flex; justify-content:center">
             <div class="card mb-5" style="width: 1500px; length: 1500px">
-                @foreach ($user as $value)
+                {{-- @foreach ($user as $value) --}}
+
+                @if ($user)
+                    
                     <div class="card-body">
                         <h5 class="card-title">Deskripsi :</h5>
-                        <p class="card-text">{{ $value->keterangan_umkm }}</p>
+                        <p class="card-text">{{ $user->keterangan_umkm }}</p>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted"><i class="bi bi-telephone"></i>&nbsp;&nbsp;Nomor yang bisa dihubungi :
-                            {{ $value->no_telp_umkm }}</small><br>
+                            {{ $user->no_telp_umkm }}</small><br>
                         <small class="text-muted"><i class="bi bi-instagram"></i>&nbsp;&nbsp;Instagram :
-                            {{ $value->url_instagram }}</small>
+                            {{ $user->url_instagram }}</small>
                     </div>
                     {{-- <div class="mb-3 px-3 d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                         </div>
                     </div> --}}
-                @endforeach
+                @endif
+
+                {{-- @endforeach --}}
             </div>
         </div>
         <div class="container">
@@ -138,6 +145,8 @@
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                         @foreach ($user1 as $value)
+
+                        {{-- @if ($user1) --}}
                             <div class="col">
                                 <div class="card h-100">
                                     <div class="card-header">{{ $value->nama_produk }}</div>
@@ -170,6 +179,8 @@
                                     </div>
                                 </div>
                             </div>
+                            {{-- @endif --}}
+
                         @endforeach
                     </div>
                 </div>

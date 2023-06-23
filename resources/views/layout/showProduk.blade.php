@@ -3,12 +3,12 @@
 <head>
       {{-- tidak ada src dibawah ini ada di folder 'original' : asset --}}
       <script src="{{ asset('bootstrap/js/color-modes.js') }}"></script>
-  
+
       <title>Profil UMKM</title>
-  
+
       <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  
+
       <!-- Favicons -->
       <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
       <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -17,7 +17,7 @@
       <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
       <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
       <meta name="theme-color" content="#712cf9">
-  
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -37,11 +37,21 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h3 class="card-title">{{ $produk->nama_produk }}</h3><br>
-                        <h5 class="card-title">{{ $produk->umkm->nama_pemilik}}</h5>
-                        <h5 class="card-title">{{ $produk->umkm->no_telp_umkm }}</h5><br>
-                        <p class="fs-5">{{ $produk->deskripsi_produk }}</p>
-                        <p class="fs-5"><small class="text-body-secondary">{{ $produk->harga_produk }}</small></p>
+                        <h3 class="card-title">Nama Produk : {{ $produk->nama_produk }}</h3><br>
+                        <p class="fs-5 text-body-dark">Deskripsi : {{ $produk->deskripsi_produk }}</p>
+
+                        <p class="fs-5 text-body-dark">Harga : Rp.{{ $produk->harga_produk }}</small></p><br>
+
+                        <h5 class="fs-5"><small class="text-body-dark"><i class="bi bi-shop"></i>&nbsp;&nbsp;UMKM &nbsp;&nbsp;: {{ $produk->umkm->nama_umkm}}</h5>
+
+                        <h5 class="fs-5"><small class="text-body-dark"><i class="bi bi-person-circle"></i>&nbsp;&nbsp;Pemilik &nbsp;&nbsp;: {{ $produk->umkm->nama_pemilik}}</h5>
+                        <h5 class="fs-5"><small class="text-body-dark"><i class="bi bi-pin-map-fill"></i>&nbsp;&nbsp;Alamat &nbsp;&nbsp;: {{ $produk->umkm->alamat_umkm}}</h5>
+                        <h5 class="fs-5"><small class="text-body-dark"><i class="bi bi-whatsapp"></i>&nbsp;&nbsp;&nbsp;&nbsp; :
+                            {{ $produk->umkm->no_telp_umkm }}</h5>
+                        <h5 class="fs-5"><small class="text-body-dark"><i class="bi bi-instagram"></i>&nbsp;&nbsp;&nbsp;&nbsp; :
+                            {{ $produk->umkm->url_instagram}}</h5>
+
+
                     </div>
                 </div>
             </div>
