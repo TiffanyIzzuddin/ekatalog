@@ -20,19 +20,17 @@ class ProdukController extends Controller
     {
         $user = DB::table('users')
         ->join('umkm', 'users.id', '=', 'umkm.user_id')
-        ->where('user_id','=', Auth::user()->id)
-        ->get();
+        ->join('produk', 'users.id', '=', 'produk.user_id')
+        ->where('users.id', '=', Auth::user()->id)
+        // ->get();
+        ->first();
 
         $user1 = DB::table('users')
         ->join('produk', 'users.id', '=', 'produk.user_id')
         ->where('user_id','=', Auth::user()->id)
         ->get();
 
-        $kategori = Kategori::all();
-        $kelurahan = Kelurahan::all();
-        $umkm = Umkm::all();
-        $produk = Produk::all();
-        return view('layout.profilanggota', compact( 'user1','user', 'kategori', 'umkm', 'kelurahan', 'produk'));
+        return view('layout.profilanggota', compact('user','user1'));
     }
 
     /**
